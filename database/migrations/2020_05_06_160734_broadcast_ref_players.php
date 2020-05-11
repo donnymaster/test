@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class BroadcastRefPlayers extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('broadcasts', function (Blueprint $table) {
+            $table->unsignedBigInteger('json_players');
+
+            $table->foreign('json_players')->references('id')->on('players_broadcast');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('broadcasts', function (Blueprint $table) {
+            $table->dropForeign(['json_players']);
+        });
+    }
+}

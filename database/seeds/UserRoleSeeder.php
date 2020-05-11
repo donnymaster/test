@@ -1,0 +1,21 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class UserRoleSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        App\UserRole::create([
+            'name_role' => "user"
+        ]);
+        App\UserRole::create([
+            'name_role' => "moderator"
+        ]);
+    }
+}
